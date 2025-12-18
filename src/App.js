@@ -19,16 +19,16 @@ const handleSubmit = async (e) => {
   setResponse("");
 
   try {
-    const res = await fetch("https://tueniuu-solar-backend.hf.space/api", {
+    const res = await fetch("/api/solar-api", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ input }),  // backend expects 'input'
+      body: JSON.stringify({ input }), 
     });
 
     const data = await res.json();
 
     if (data.result) {
-      setResponse(data.result); // already Markdown + LaTeX
+      setResponse(data.result);
     } else if (data.error) {
       setResponse("Error: " + data.error);
     } else {
